@@ -1,0 +1,73 @@
+# Warehouse Optimization System Configuration
+# ==========================================
+# This file allows you to customize all system parameters without modifying code
+
+# File and Data Settings
+file_settings:
+  file_path: "Sales.XLSX"  # Path to your order data file
+  order_id_column: "Sales Order No."
+  sku_column: "Material Number"
+  quantity_column: "Invoiced Qty"
+  date_column: "Billing Date"
+
+# Warehouse Physical Layout
+warehouse:
+  racks: 30                    # Total number of racks
+  bays: 24                     # Number of bays per rack
+  levels: 7                    # Number of levels per bay
+  middle_aisle_after_bay: 11   # Bay number after which middle aisle starts
+  bay_width: 1.0              # Width of each bay (meters)
+  rack_depth: 1.0             # Depth of each rack (meters)
+  picking_aisle_width: 3.0    # Width of picking aisles (meters)
+  cross_aisle_width: 4.0      # Width of cross aisles (meters)
+  dispatch_zone_location: "front"  # Options: front, back, center
+
+# Optimization Settings
+optimization:
+  mode: "forecast"            # Optimization mode (currently only forecast supported)
+  forecast_weight: 1.0        # Weight for forecast-based objective
+  time_limit: 300            # Maximum optimization time (seconds)
+  mip_focus: 1               # Gurobi MIP focus (1=feasible, 2=optimal, 3=bound)
+  distance_metric: "manhattan"  # Distance calculation: manhattan or euclidean
+  linear_approx_euclidean: true  # Use linear approximation for euclidean distance
+
+# Forecasting Parameters
+forecasting:
+  demand_weight: 0.5         # Weight for total demand in forecast score
+  frequency_weight: 0.3      # Weight for order frequency in forecast score
+  stability_weight: 0.2      # Weight for demand stability in forecast score
+
+# Picker Configuration (for VRP routing)
+picker_config:
+  num_pickers: 2             # Number of available pickers
+  picker_capacity: 25        # Maximum units a picker can carry
+  picker_speed: 3.5          # Average picker speed (meters/minute)
+  picking_time_per_location: 0.5  # Time to pick at each location (minutes)
+  max_tour_time: 20          # Maximum tour duration (minutes)
+  setup_time: 1.0           # Picker setup time (minutes)
+
+# VRP Solver Configuration
+vrp_solver:
+  time_limit_seconds: 30     # Maximum solve time for VRP
+  solution_limit: 100        # Maximum number of solutions to explore
+  local_search_metaheuristic: "GUIDED_LOCAL_SEARCH"  # GUIDED_LOCAL_SEARCH, TABU_SEARCH, SIMULATED_ANNEALING
+  first_solution_strategy: "PATH_CHEAPEST_ARC"       # PATH_CHEAPEST_ARC, SAVINGS, CHRISTOFIDES
+
+# Logging Configuration
+logging:
+  level: "INFO"              # Logging level: DEBUG, INFO, WARNING, ERROR
+  log_to_file: true          # Whether to log to file
+  log_file: "warehouse_optimization.log"  # Log file name
+
+# Performance Settings
+performance:
+  enable_distance_matrix_caching: true  # Pre-calculate distance matrices
+  parallel_forecasting: false          # Use parallel processing for forecasting (if available)
+  memory_limit_gb: 4                   # Memory limit for large datasets
+
+# Visualization Settings
+visualization:
+  save_plots: true           # Save plots to files
+  plot_format: "png"         # Plot format: png, pdf, svg
+  plot_dpi: 300             # Plot resolution
+  show_interactive: true     # Show interactive plots

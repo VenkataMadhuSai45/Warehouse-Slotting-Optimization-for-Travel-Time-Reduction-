@@ -1,0 +1,27 @@
+2025-08-16 20:15:42,990 - INFO - Starting Warehouse VRP Routing System
+2025-08-16 20:15:42,991 - INFO - [SUCCESS] Warehouse configuration validated successfully
+2025-08-16 20:15:42,991 - INFO - [SUCCESS] Picker configuration validated successfully
+2025-08-16 20:15:42,991 - INFO - Loading slotting assignments from 'slotting_assignments_output.csv'...
+2025-08-16 20:15:43,050 - INFO - [SUCCESS] Loaded assignment details for 678 SKUs
+2025-08-16 20:15:43,057 - INFO - Loading and consolidating orders from 'order_batch.csv'...
+2025-08-16 20:15:43,077 - INFO - [SUCCESS] Consolidated into a single pick wave with 10 unique SKUs.
+2025-08-16 20:15:43,078 - INFO - Solving VRP for batch of 10 unique SKUs...
+2025-08-16 20:15:43,191 - INFO - Solving VRP...
+2025-08-16 20:16:13,193 - INFO - [SUCCESS] VRP Solution Found!
+2025-08-16 20:16:13,193 - INFO - 
+============================================================
+OPTIMIZED PICKER ROUTES
+============================================================
+2025-08-16 20:16:13,193 - INFO - 
+Picker 1 Route:
+  Path: DISPATCH_ZONE -> M16280220[5u] -> M16280472[3u] -> M16280295[2u] -> M2N4G7143[4u] -> M16280427[10u] -> M16280466[7u] -> M2N5G9024[6u] -> M2N3G1450[8u] -> DISPATCH_ZONE
+  Time: 21.56 min | Load: 45 units | Distance: 45.5 m
+2025-08-16 20:16:13,193 - INFO - 
+Picker 2 Route:
+  Path: DISPATCH_ZONE -> M16280182[3u] -> M2N3R2754[9u] -> DISPATCH_ZONE
+  Time: 14.05 min | Load: 12 units | Distance: 23.5 m
+2025-08-16 20:16:13,196 - INFO - 
+[SUCCESS] Picker route summary saved to 'picker_summary_by_route.csv'
+2025-08-16 20:16:15,172 - INFO - 
+[SUCCESS] VRP optimization completed successfully!
+2025-08-16 20:16:15,173 - INFO - VRP Routing System Complete
